@@ -12,4 +12,8 @@ ensures that no rows are selected (since 1 is never equal to 0), but the structu
 
   *** unique constraint vs primary key
 
+create index for table
+*** CREATE INDEX idx_last_name ON employees(last_name);
+
+
 
