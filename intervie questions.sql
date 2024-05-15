@@ -18,4 +18,15 @@ create index for table
 *** CREATE INDEX idx_last_name ON employees(last_name);
 
 
+-- merge statment in table 
+group by with two column 
+
+
+ 
+
+SELECT emp_id, emp_name, SUM(salary) AS total_salary
+FROM employees
+GROUP BY emp_id, emp_name;
+
+
 
