@@ -21,6 +21,9 @@ CREATE INDEX index_name
 ON table_name (column_name);
 
 
+
+
+
 unique index:
   A unique index in SQL ensures that the values in a specified column or set of columns are unique across the table. This means that no two rows can have the same combination of values in the indexed columns.
   Unique indexes are often used to enforce data integrity and prevent duplicate entries in a database table
@@ -51,6 +54,22 @@ They are commonly used in data warehousing and decision support systems to impro
 example:
 CREATE BITMAP INDEX idx_department_id
 ON employees (department_id);
+
+| emp_id | emp_name | department_id |
+|--------|----------|---------------|
+|   101  |   Alice  |       1       |
+|   102  |   Bob    |       2       |
+|   103  |   Carol  |       1       |
+|   104  |   David  |       3       |
+|   105  |   Emma   |       2       |
+
+
+| department_id | Bitmap                |
+|---------------|-----------------------|
+|       1       | 1 1 0 0 0             |
+|       2       | 0 0 1 0 1             |
+|       3       | 0 0 0 1 0             |
+
 
 
 
