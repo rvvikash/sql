@@ -29,10 +29,14 @@ FROM table_name
 WHERE condition;
 
 
+
+
 To refresh the data in a materialized view (i.e., update it with the latest data from the underlying tables), 
 you typically use the REFRESH command:
 
 REFRESH MATERIALIZED VIEW view_name;
+
+-- it help to refresh the materilizaed table and its run the query of sales and add in materilized view
 
 
 
