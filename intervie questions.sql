@@ -28,7 +28,7 @@ select a.*,sum(salary)over(order by emp_id asc) as tt from employees a
 To calculate the moving sum from all previous values in SQL, 
 you can use a window function along with the ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW clause.
 This clause defines the window for the window function to include all rows from the beginning of the partition up to the current row. 
- Here's an example query:
+ Heres an example query:
 
  SELECT
     date,
@@ -41,6 +41,9 @@ FROM
  if we want to change the moving sum from last 4 days we can replace the unbounded with number. 
  6 preceding like that .
 
+
+ if we have no primary key and we want to join from another table then we can 
+create a composite key combination of two column and make as unique and perform join .
 
 
 
