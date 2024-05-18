@@ -1,3 +1,7 @@
+
+
+
+
 -- Create employees table
 CREATE TABLE employee (
     employee_id INT PRIMARY KEY,
