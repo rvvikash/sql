@@ -43,6 +43,15 @@ CREATE INDEX idx_department_hiredate
 ON employees (department_id, hire_date);
 
 
+NOTE :primary key automatically behave as index ;
+
+BITMAP INDEX:
+Bitmap indexes are most effective for columns with low cardinality, where the number of distinct values is relatively small compared to the total number of rows in the table.
+They are commonly used in data warehousing and decision support systems to improve query performance for analytical queries and reporting.
+example:
+CREATE BITMAP INDEX idx_department_id
+ON employees (department_id);
+
 
 
 
