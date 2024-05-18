@@ -1,0 +1,4 @@
+Clustered vs Non-Clustered Index
+In a table, there can be only one clustered index or one or more than one non_clustered index.
+In Clustered index, there is no separate index storage but in Non-Clustered index, there is separate index storage for the index.
+Clustered index offers faster data access, on the other hand, the Non-clustered index is slower.
