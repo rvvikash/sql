@@ -46,5 +46,8 @@ FROM
 create a composite key combination of two column and make as unique and perform join .
 
 
+ Tip: Also look at the CEILING() and ROUND() functions.
+
+
 
 
