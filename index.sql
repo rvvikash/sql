@@ -8,6 +8,13 @@ In Clustered index, there is no separate index storage
 but in Non-Clustered index, there is separate index storage for the index.
 Clustered index offers faster data access, on the other hand, the Non-clustered index is slower.
 
+reason :
+  When you search for data using a non-clustered index,
+  the database engine first locates the rows in the index and then uses the pointers to retrieve the corresponding rows from the table.
+  
+  When you search for data using a clustered index, the database engine can quickly navigate directly to the correct location
+  in the data file because the rows are physically stored in the order of the index
+
 
 when we create a primary key then it automatically behave as index .
 
