@@ -48,3 +48,17 @@ FROM
 assume if we want to find 3rd highest salary in which repeated product is there ,
 so it only way to achieve this using dense rank if there is duplicate salary for the product so in case if someone is looking of 3rd max amount then any window
 will work ,but if someine looking all the detail which have 3rd max salary then need to use dense rank without partition. 
+
+
+
+LAG :
+
+LAG(column_name, offset, default_value) OVER (ORDER BY order_column)
+
+Lead :
+
+LEAD(column_name, offset, default_value) OVER (ORDER BY order_column)
+
+
+
+	
