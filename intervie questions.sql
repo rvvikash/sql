@@ -41,6 +41,8 @@ FROM
  if we want to change the moving sum from last 4 days we can replace the unbounded with number. 
  6 preceding like that .
 
+ example :- https://datalemur.com/questions/rolling-average-tweets
+
 
  if we have no primary key and we want to join from another table then we can 
 create a composite key combination of two column and make as unique and perform join .
