@@ -51,5 +51,10 @@ create a composite key combination of two column and make as unique and perform 
  Tip: Also look at the CEILING() and ROUND() functions.
 
 
+ select a.*,dense_rank() over( order by email_id) as rn,ascii(email_id) from employe a
+--check we used ascii value 
+
+
+
 
 
