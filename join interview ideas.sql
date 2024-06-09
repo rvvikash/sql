@@ -36,5 +36,9 @@ INNER JOIN employees b ON a.manager_id = b.employee_id
 WHERE CONCAT(a.first_name, ' ', a.last_name) = 'Bob Brown';
 
 
+full outer join concept imported video
+https://www.youtube.com/watch?v=KQfWd6V3IB8&ab_channel=AnkitBansal
+
+
 
 
