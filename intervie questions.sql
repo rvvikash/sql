@@ -54,6 +54,9 @@ create a composite key combination of two column and make as unique and perform 
  select a.*,dense_rank() over( order by email_id) as rn,ascii(email_id) from employe a
 --check we used ascii value 
 
+SELECT LPAD("SQL Tutorial", 20, "ABC");
+ABCABCABSQL Tutorial
+
 
 
 
