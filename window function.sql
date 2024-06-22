@@ -59,6 +59,8 @@ Lead :
 
 LEAD(column_name, offset, default_value) OVER (ORDER BY order_column)
 
+sum() over(partition by col_name order by col_name) as commulative_sum
+
 
 
 	
