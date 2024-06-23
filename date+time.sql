@@ -16,3 +16,7 @@ DATEDIFF(day, required_date, shipped_date)
 SELECT 
     DATEADD(second, 1, '2018-12-31 23:59:59') result;
 
+
+  THEN SEC_TO_TIME(TIMESTAMPDIFF(SECOND, Arrival, Next_Arrival))
+
+
