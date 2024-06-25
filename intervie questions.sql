@@ -75,8 +75,42 @@ FROM PeriodicSales
 GROUP BY Period
 ORDER BY Period;
 
+| Period | PeriodStartDate | PeriodEndDate | TotalSales |
+|--------|-----------------|---------------|------------|
+| 1      | 2024-06-01      | 2024-06-05    | 750.00     |
+| 2      | 2024-06-06      | 2024-06-10    | 780.00     |
+| 3      | 2024-06-11      | 2024-06-15    | 1150.00    |
+| 4      | 2024-06-16      | 2024-06-20    | 1400.00    |
+| 5      | 2024-06-21      | 2024-06-25    | 1650.00    |
+| 6      | 2024-06-26      | 2024-06-30    | 1900.00    |
+
 
 (CAST((EXTRACT(DAY FROM date) - 1) / 4 AS float) + 1) AS period_number
+
+WITH WeeklySales AS (
+    SELECT 
+        SaleDate,
+        Amount,
+        DATEPART(WEEK, SaleDate) AS WeekNumber
+    FROM Sales
+)
+SELECT 
+    WeekNumber,
+    MIN(SaleDate) AS WeekStartDate,
+    MAX(SaleDate) AS WeekEndDate,
+    SUM(Amount) AS TotalSales
+FROM WeeklySales
+GROUP BY WeekNumber
+ORDER BY WeekNumber;
+
+| WeekNumber | WeekStartDate | WeekEndDate | TotalSales |
+|------------|---------------|-------------|------------|
+| 22         | 2024-06-01    | 2024-06-02  | 250.00     |
+| 23         | 2024-06-03    | 2024-06-09  | 990.00     |
+| 24         | 2024-06-10    | 2024-06-16  | 1450.00    |
+| 25         | 2024-06-17    | 2024-06-23  | 1760.00    |
+| 26         | 2024-06-24    | 2024-06-30  | 2220.00    |
+
 
 
 
