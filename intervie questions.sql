@@ -76,6 +76,8 @@ GROUP BY Period
 ORDER BY Period;
 
 
+(CAST((EXTRACT(DAY FROM date) - 1) / 4 AS float) + 1) AS period_number
+
 
 
 
