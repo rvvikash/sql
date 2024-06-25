@@ -27,5 +27,21 @@ SELECT
   THEN SEC_TO_TIME(TIMESTAMPDIFF(SECOND, Arrival, Next_Arrival))
 
 
+      
+
+SELECT Name, FORMAT(HireDate, 'HH:mm:ss') AS HireTimeOnly FROM Employee;
+SELECT Name, FORMAT(HireDate, 'yyyy-MM-dd') AS HireDateOnly FROM Employee;
+SELECT Name, FORMAT(HireDate, 'yyyy-MM-dd HH:mm:ss') AS FormattedHireDate FROM Employee;
+SELECT Name, DATEDIFF(YEAR, HireDate, GETDATE()) AS YearsOfService FROM Employee;
+SELECT Name, DATEADD(YEAR, 1, HireDate) AS OneYearAfterHire FROM Employee;--add one year--
+SELECT Name, DATEADD(DAY, 10, HireDate) AS TenDaysAfterHire FROM Employee;
+SELECT Name, DAY(DateOfBirth) AS BirthDay FROM Employee;
+SELECT Name, MONTH(DateOfBirth) AS BirthMonth FROM Employee;
+SELECT Name, FORMAT(DateOfBirth, 'dddd, MMMM dd, yyyy') AS FullDateOfBirth FROM Employee;
+
+
+
+
+
 
 
