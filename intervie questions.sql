@@ -57,6 +57,25 @@ create a composite key combination of two column and make as unique and perform 
 SELECT LPAD("SQL Tutorial", 20, "ABC");
 ABCABCABSQL Tutorial
 
+ 
+
+WITH PeriodicSales AS (
+    SELECT 
+        SaleDate,
+        Amount,
+        CEILING(DAY(SaleDate) / 5.0) AS Period
+    FROM Sales
+)
+SELECT 
+    Period,
+    MIN(SaleDate) AS PeriodStartDate,
+    MAX(SaleDate) AS PeriodEndDate,
+    SUM(Amount) AS TotalSales
+FROM PeriodicSales
+GROUP BY Period
+ORDER BY Period;
+
+
 
 
 
