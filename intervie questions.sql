@@ -112,6 +112,33 @@ ORDER BY WeekNumber;
 | 26         | 2024-06-24    | 2024-06-30  | 2220.00    |
 
 
+WITH WeeklySales AS (
+    SELECT 
+        DATEPART(WEEK, SaleDate) AS WeekNumber,
+        SUM(Amount) AS TotalSales
+    FROM Sales
+    GROUP BY DATEPART(WEEK, SaleDate)
+)
+SELECT 
+    [22] AS Week22,
+    [23] AS Week23,
+    [24] AS Week24,
+    [25] AS Week25,
+    [26] AS Week26
+FROM 
+    WeeklySales
+PIVOT
+(
+    SUM(TotalSales)
+    FOR WeekNumber IN ([22], [23], [24], [25], [26])
+) AS PivotTable;
+
+
+| Week22 | Week23 | Week24 | Week25 | Week26 |
+|--------|--------|--------|--------|--------|
+| 250.00 | 990.00 | 1450.00| 1760.00| 2220.00|
+
+
 
 
 
