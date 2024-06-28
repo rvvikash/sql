@@ -139,6 +139,10 @@ PIVOT
 | 250.00 | 990.00 | 1450.00| 1760.00| 2220.00|
 
 
+Flexible Schema Design
+Design your database schema to be more flexible, for instance, using JSON or XML columns to store dynamic attributes.
+
+
 
 
 
