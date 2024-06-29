@@ -4,6 +4,7 @@ SELECT sender_id, COUNT(SENDER_ID)
 FROM messages 
 WHERE EXTRACT(YEAR FROM sent_date)='2022'
 AND EXTRACT(MONTH FROM SENT_DATE)='08'
+TO_DATE('2022-07-01', 'YYYY-MM-DD'))
 GROUP BY sender_id order by count(sender_id) desc
 limit 2
 https://datalemur.com/questions/teams-power-users
