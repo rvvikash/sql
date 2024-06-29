@@ -142,6 +142,29 @@ PIVOT
 Flexible Schema Design
 Design your database schema to be more flexible, for instance, using JSON or XML columns to store dynamic attributes.
 
+WITH RECURSIVE employee_hierarchy AS (
+    SELECT emp_id, emp_name, manager_id, 0 AS level
+    FROM employees
+    WHERE emp_id = 1
+    
+    UNION ALL
+    
+    SELECT e.emp_id, e.emp_name, e.manager_id, eh.level + 1
+    FROM employees e
+    JOIN employee_hierarchy eh ON e.manager_id = eh.emp_id
+)
+SELECT emp_id, emp_name, level
+FROM employee_hierarchy
+ORDER BY level, emp_id;
+
+
+WITH RECURSIVE factorial_cte (n, factorial,i) AS (
+    SELECT 1, 1 ,0 -- Initial values for n and factorial
+    UNION ALL
+    SELECT n + 1, factorial * (n + 1),i+4
+    FROM factorial_cte
+    WHERE n<5
+)
 
 
 
