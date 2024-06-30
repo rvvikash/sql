@@ -24,6 +24,7 @@ SELECT
   DATEPART(month, shipped_date) [month], 
   DATEPART(day, shipped_date) [day]
   SELECT TIMEDIFF('2018-05-23 18:00:00', '2018-05-23 12:00:00')
+  SELECT CURRENT_DATE AS current_date;
   As Result;
 
 
