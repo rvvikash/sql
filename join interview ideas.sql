@@ -39,6 +39,12 @@ WHERE CONCAT(a.first_name, ' ', a.last_name) = 'Bob Brown';
 full outer join concept imported video
 https://www.youtube.com/watch?v=KQfWd6V3IB8&ab_channel=AnkitBansal
 
+Cross Join:
+
+The comma , between orders and order_counts in the FROM clause performs a cross join (Cartesian product). 
+In a cross join, each row from the first table (orders in this case) is combined with each row from the
+second table (order_counts).
+
 
 
 
