@@ -46,5 +46,9 @@ In a cross join, each row from the first table (orders in this case) is combined
 second table (order_counts).
 
 
+Well, by writing p1.topping_name < p2.topping_name, it ensures that the second topping's name (p2.topping_name) '
+comes after first topping's name (p1.topping_name). Isn't this cool?    
+
+
 
 
