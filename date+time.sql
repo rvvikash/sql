@@ -5,6 +5,9 @@ FROM messages
 WHERE EXTRACT(YEAR FROM sent_date)='2022'
 AND EXTRACT(MONTH FROM SENT_DATE)='08'
 SELECT TO_char(event_date, 'YYYY') AS event_date_formatted
+SELECT EXTRACT(EPOCH FROM end_time_column - start_time_column) AS time_diff_seconds
+FROM your_table;
+
 FROM user_actions;
 
 GROUP BY sender_id order by count(sender_id) desc
