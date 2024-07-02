@@ -47,7 +47,17 @@ second table (order_counts).
 
 
 Well, by writing p1.topping_name < p2.topping_name, it ensures that the second topping's name (p2.topping_name) '
-comes after first topping's name (p1.topping_name). Isn't this cool?    
+comes after first topping's name (p1.topping_name). Isn't this cool? 
+
+Where Clause (WHERE a.topping_name < b.topping_name):
+SELECT a.*, b.*
+FROM pizza_toppings a
+CROSS JOIN pizza_toppings b,
+pizza_toppings c
+WHERE a.topping_name < b.topping_nam
+
+This condition filters the results to ensure that only combinations where a.topping_name is less than b.topping_name are included in the result set. This helps to prevent duplicate combinations
+where toppings are swapped (e.g., Pepperoni, Sausage and Sausage, Pepperoni).
 
 
 
