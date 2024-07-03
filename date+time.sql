@@ -49,6 +49,10 @@ SELECT Name, DATEADD(DAY, 10, HireDate) AS TenDaysAfterHire FROM Employee;
 SELECT Name, DAY(DateOfBirth) AS BirthDay FROM Employee;
 SELECT Name, MONTH(DateOfBirth) AS BirthMonth FROM Employee;
 SELECT Name, FORMAT(DateOfBirth, 'dddd, MMMM dd, yyyy') AS FullDateOfBirth FROM Employee;
+SELECT DATE_FORMAT(your_date_column, '%W') AS DayOfWeek
+FROM your_table
+WHERE WEEKDAY(your_date_column) BETWEEN 0 AND 4;
+
 
 
 
