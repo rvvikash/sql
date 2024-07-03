@@ -6,6 +6,10 @@ WHERE EXTRACT(YEAR FROM sent_date)='2022'
 AND EXTRACT(MONTH FROM SENT_DATE)='08'
 SELECT TO_char(event_date, 'YYYY') AS event_date_formatted
 SELECT EXTRACT(EPOCH FROM end_time_column - start_time_column) AS time_diff_seconds
+SELECT TO_CHAR(your_date_column, 'Day') AS DayOfWeek
+FROM your_table
+WHERE EXTRACT(DOW FROM your_date_column) BETWEEN 1 AND 5;
+
 FROM your_table;
 
 FROM user_actions;
