@@ -168,5 +168,19 @@ WITH RECURSIVE factorial_cte (n, factorial,i) AS (
 
 
 
+1.     Display the first name for employees where last name contain character ‘b’ after 3rd position without like operator
+
+2.     Display third highest salary of all employees
+Without using analytical function or max
+
+3.       Display details of employees whose salary is higher than their respective departments by 6%
+
+4.       Emp I'd emp name salary Mgr id
+
+5.       Prepare well about hive and Hadoop architecture. Questions are related to those.
+
+
+
+
 
 
