@@ -61,6 +61,13 @@ LEAD(column_name, offset, default_value) OVER (ORDER BY order_column)
 
 sum() over(partition by col_name order by col_name) as commulative_sum
 
+NTILE:
+The function maka  group of set for example if we gave 10 entry so it kind of do bucket where 
+3 data will be there and in last it will four.
+NTILE(number_expression) OVER ( [PARTITION BY partition_expression ] ORDER BY sort_expression [ASC | DESC])
+NTILE(number_of_tiles) OVER (ORDER BY column_name)
+
+
 
 
 	
