@@ -175,6 +175,24 @@ Without using analytical function or max
 
 3.       Display details of employees whose salary is higher than their respective departments by 6%
 
+
+ WITH avg_salaries AS (
+    SELECT
+        department,
+        AVG(salary) AS avg_salary
+    FROM employees
+    GROUP BY department
+)
+SELECT
+    e.employee_id,
+    e.department,
+    e.salary
+FROM employees e
+JOIN avg_salaries a
+    ON e.department = a.department
+WHERE e.salary > a.avg_salary * 1.06;
+
+
 4.       Emp I'd emp name salary Mgr id
 
 5.       Prepare well about hive and Hadoop architecture. Questions are related to those.
