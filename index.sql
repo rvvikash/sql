@@ -3,18 +3,22 @@ Clustered vs Non-Clustered Index
 In a table, there can be only one clustered index or  there can be 
 one or more than one non_clustered index.
 
+  clustered index:
 
-In Clustered index, there is no separate index storage 
-but in Non-Clustered index, there is separate index storage for the index.
-Clustered index offers faster data access, on the other hand, the Non-clustered index is slower.
-
-reason :
-  When you search for data using a non-clustered index,
-  the database engine first locates the rows in the index and then uses the pointers to retrieve the corresponding rows from the table.
+Definition: A clustered index determines the physical order of data in the table. In other words, the rows are stored on disk in the same order as the clustered index.
   
-  When you search for data using a clustered index, the database engine can quickly navigate directly to the correct location
-  in the data file because the rows are physically stored in the order of the index
+Unique Constraint: Each table can have only one clustered index because the data can be sorted in only one way.
+  
+Primary Key: By default, the primary key of a table is often used as the clustered index. However, this is not mandatory.
+  
+Performance: Clustered indexes can improve performance for queries that retrieve a range of values or involve sorting. Since the data is physically ordered, it can be retrieved more efficiently.
 
+  Non clustered index:
+
+Definition: A non-clustered index is a separate structure from the data table. It creates a logical order of the data but does not alter the physical order of the data in the table.
+Multiple Indexes: A table can have multiple non-clustered indexes, each potentially optimizing different types of queries.
+Structure: It contains pointers to the data rows, which means it creates a separate data structure that references the location of the actual data in the table.
+Performance: Non-clustered indexes can improve query performance by providing quick access to data without affecting the physical storage of the data. However, they can be less efficient for range queries compared to clustered indexes.
 
 when we create a primary key then it automatically behave as index .
 
