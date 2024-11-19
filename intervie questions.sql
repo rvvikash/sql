@@ -197,6 +197,18 @@ WHERE e.salary > a.avg_salary * 1.06;
 
 5.       Prepare well about hive and Hadoop architecture. Questions are related to those.
 
+ Emp	EmpName	Sal		Dep	Location       
+	1	tk	null		TL	Bangalore
+	1	tk	10000000	null	Bangalore
+	2	hk	null		AM	HYD
+	2	hk	200000		null	null
+
+ EMP	EMPName		Sal		Dep	Location
+	1	tk		10000000	TL	Bangalore	
+	2	hk		200000		AM	Hyd
+
+
+
 
 
 
