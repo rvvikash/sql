@@ -208,6 +208,52 @@ WHERE e.salary > a.avg_salary * 1.06;
 	2	hk		200000		AM	Hyd
 
 
+---paytm--- 
+last_active_date: The user must have interacted with Spotify within the last 30 days.
+•    sessions: The user must have engaged with Spotify for at least 5 sessions.
+•    listening_hours: The user must have spent at least 10 hours listening on Spotify.
+
+
+Based on the condition above, calculate the active 'user_penetration_rate' by using the following formula.
+•    Active User Penetration Rate = (Number of Active Spotify Users in the Country / Total users in the Country)
+
+
+Total Population of the country is based on both active and non-active users.
+​
+The output should contain 'country' and 'active_user_penetration_rate' rounded to 2 decimals.
+
+
+Let's assume the current_day is 2024-01-31.
+
+
+user_id:
+int
+country:
+varchar
+last_active_date:
+datetime
+listening_hours:
+int
+sessions:
+int
+
+
+SELECT 
+    country,
+    ROUND(
+        CAST(COUNT(CASE 
+                      WHEN last_active_date >= DATE_SUB('2024-01-31', INTERVAL 30 DAY) 
+                           AND sessions >= 5 
+                           AND listening_hours >= 10 
+                      THEN 1 END) AS DECIMAL) / 
+        COUNT(user_id), 2
+    ) AS active_user_penetration_rate
+FROM users
+GROUP BY country;
+	
+	
+
+
 
 
 
