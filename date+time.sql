@@ -25,11 +25,6 @@ DATEDIFF(day, required_date, shipped_date)
 
 SELECT 
     DATEADD(second, 1, '2018-12-31 23:59:59') result;
-
-  DATEPART(year, shipped_date) [year], 
-  DATEPART(quarter, shipped_date) [quarter], 
-  DATEPART(month, shipped_date) [month], 
-  DATEPART(day, shipped_date) [day]
   SELECT TIMEDIFF('2018-05-23 18:00:00', '2018-05-23 12:00:00')
   SELECT CURRENT_DATE AS current_date;
   As Result;
@@ -39,7 +34,10 @@ SELECT
 
 
       
-
+  DATEPART(year, shipped_date) [year], 
+  DATEPART(quarter, shipped_date) [quarter], 
+  DATEPART(month, shipped_date) [month], 
+  DATEPART(day, shipped_date) [day]
 SELECT Name, FORMAT(HireDate, 'HH:mm:ss') AS HireTimeOnly FROM Employee;
 SELECT Name, FORMAT(HireDate, 'yyyy-MM-dd') AS HireDateOnly FROM Employee;
 SELECT Name, FORMAT(HireDate, 'yyyy-MM-dd HH:mm:ss') AS FormattedHireDate FROM Employee;
@@ -53,6 +51,7 @@ SELECT DATE_FORMAT(your_date_column, '%W') AS DayOfWeek
 FROM your_table
 WHERE WEEKDAY(your_date_column) BETWEEN 0 AND 4;
 
+SELECT FORMAT(GETDATE(), 'yyyy-MM-dd HH:mm:ss') AS formatted_datetime;
 
 
 
