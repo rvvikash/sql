@@ -53,6 +53,22 @@ WHERE WEEKDAY(your_date_column) BETWEEN 0 AND 4;
 
 SELECT FORMAT(GETDATE(), 'yyyy-MM-dd HH:mm:ss') AS formatted_datetime;
 
+----last 10 days using date add--
+SELECT SUM(sale_amount) AS total_sales_last_10_days
+FROM sales
+WHERE sale_date >= DATEADD(DAY, -10, GETDATE());
+----last 10 days using date diff--
+
+SELECT SUM(sale_amount) AS total_sales_last_10_days
+FROM sales
+WHERE DATEDIFF(DAY, sale_date, GETDATE()) <= 10;
+
+SELECT DATEADD(HOUR, -10, GETDATE()) AS NewDateTime;
+
+
+
+
+
 
 
 
