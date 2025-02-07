@@ -25,3 +25,18 @@ WITH RECURSIVE file_paths AS (
 )
 SELECT file_id, path
 FROM file_paths;
+
+
+
+WITH RECURSIVE Triangle AS (
+    -- Base case: The first row with one number (1)
+    SELECT 1 AS num, 1 AS row_num
+    UNION ALL
+    -- Recursive case: Adding the next number to the row for each iteration
+    SELECT num + 1, row_num + 1
+    FROM Triangle
+    WHERE row_num < 5  -- This sets the height of the triangle (5 rows)
+)
+SELECT REPEAT(' ', 5 - row_num) + REPEAT('*', row_num)
+FROM Triangle;
+
