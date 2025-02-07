@@ -20,7 +20,7 @@ Multiple Indexes: A table can have multiple non-clustered indexes, each potentia
 Structure: It contains pointers to the data rows, which means it creates a separate data structure that references the location of the actual data in the table.
 Performance: Non-clustered indexes can improve query performance by providing quick access to data without affecting the physical storage of the data. However, they can be less efficient for range queries compared to clustered indexes.
 
-when we create a primary key then it automatically behave as index .
+when we create a primary key then it automatically behave as index  / Clustered Index:.
 
 if there is no index define in table it will scan full scan to retrive the data.
 
