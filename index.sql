@@ -82,6 +82,23 @@ ON employees (department_id);
 |       3       | 0 0 0 1 0             |
 
 
+ndex Type	Best For	Example
+Clustered Index	Range queries and sorting	CREATE TABLE employees (emp_id INT PRIMARY KEY, emp_name VARCHAR(100));
+
+Non-Clustered Index	Quick lookups, not for range queries	CREATE INDEX idx_emp_name ON employees (emp_name);
+
+Unique Index	Preventing duplicates	CREATE UNIQUE INDEX idx_emp_email ON employees (emp_email);
+
+Composite Index	Queries using multiple columns	CREATE INDEX idx_department_hiredate ON employees (department_id, hire_date);
+
+Bitmap Index	Low cardinality columns (e.g., gender, status)	CREATE BITMAP INDEX idx_department_id ON employees (department_id);
+
+Primary Key Index	Enforcing uniqueness and automatic indexing	CREATE TABLE employees (emp_id INT PRIMARY KEY, emp_name VARCHAR(100));
+
+B-tree Index	Fast lookups, range queries, and sorting	CREATE INDEX idx_emp_id_btree ON employees (emp_id);
+
+
+
 
 
 
