@@ -250,6 +250,9 @@ SELECT
     ) AS active_user_penetration_rate
 FROM users
 GROUP BY country;
+
+
+https://www.udemy.com/course/a-crash-course-in-pyspark/?couponCode=ST9MT120225A
 	
 	
 
