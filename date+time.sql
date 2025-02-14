@@ -103,9 +103,12 @@ Using DATE_ADD():
 SELECT SUM(sale_amount) AS total_sales_last_10_days
 FROM sales
 WHERE sale_date >= DATE_ADD(CURRENT_DATE, INTERVAL -10 DAY);
+
+
 Explanation:
 
 This filters sales that occurred in the last 10 days by subtracting 10 days from CURRENT_DATE.
+
 Using DATEDIFF():
 
 
