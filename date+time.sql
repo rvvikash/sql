@@ -117,3 +117,40 @@ FROM sales
 WHERE DATEDIFF(CURRENT_DATE, sale_date) <= 10;
 Explanation:
 This calculates the number of days between the sale date and today, filtering for sales within the last 10 days.
+
+
+The WEEKDAY(your_date_column) function returns an integer (0 to 6), where:
+
+Day	Return Value
+Monday	0
+Tuesday	1
+Wednesday	2
+Thursday	3
+Friday	4
+Saturday	5
+Sunday	6
+What BETWEEN 0 AND 4 Does
+BETWEEN 0 AND 4 selects rows where the date falls on Monday to Friday.
+It excludes Saturdays (5) and Sundays (6).
+Equivalent SQL
+sql
+Copy
+Edit
+WHERE WEEKDAY(your_date_column) IN (0, 1, 2, 3, 4)
+Example Table: sales
+sale_id	sale_date
+1	2024-02-12 (Monday)
+2	2024-02-13 (Tuesday)
+3	2024-02-17 (Saturday)
+4	2024-02-18 (Sunday)
+Query
+sql
+Copy
+Edit
+SELECT * FROM sales
+WHERE WEEKDAY(sale_date) BETWEEN 0 AND 4;
+Filtered Output
+sale_id	sale_date
+1	2024-02-12 (Monday)
+2	2024-02-13 (Tuesday)
+       
