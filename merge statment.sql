@@ -59,40 +59,26 @@ WHERE target.employee_id IS NULL;
 
 
 
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, when, coalesce
+from delta.tables import DeltaTable
 
-# Assuming SparkSession is already created
-spark = SparkSession.builder \
-    .appName("Merge Example") \
-    .getOrCreate()
+# Load the target table (existing employees)
+target_table = DeltaTable.forPath(spark, "/mnt/data/employees")
 
-# Load target and source DataFrames
-target = spark.table("employees")  # Replace with your actual target DataFrame
-source = spark.table("new_employees")  # Replace with your actual source DataFrame
+# Load the source DataFrame (new updates & new employees)
+source_df = spark.read.format("parquet").load("/mnt/data/new_employees")
 
-# Define the merge condition
-merge_condition = target["employee_id"] == source["employee_id"]
-
-# Perform the merge operation
-merged_df = target.alias("target") \
-    .join(source.alias("source"), merge_condition, "outer") \
-    .selectExpr(
-        "coalesce(target.employee_id, source.employee_id) AS employee_id",
-        "coalesce(source.name, target.name) AS name",
-        "coalesce(source.salary, target.salary) AS salary"
-    ) \
-    .withColumn("operation",
-                when(target["employee_id"].isNull(), "INSERT")
-                .when(source["employee_id"].isNull(), "DELETE")
-                .otherwise("UPDATE")) \
-    .orderBy("employee_id")
-
-# Save the merged DataFrame back to the target table or another output
-merged_df.write.mode("overwrite").saveAsTable("employees_merged")
-
-# Stop the SparkSession (if not using interactive shell)
-spark.stop()
+# Perform the MERGE operation
+target_table.alias("target").merge(
+    source_df.alias("source"),
+    "target.employee_id = source.employee_id"
+).whenMatchedUpdate(set={
+    "name": "source.name",
+    "salary": "source.salary"
+}).whenNotMatchedInsert(values={
+    "employee_id": "source.employee_id",
+    "name": "source.name",
+    "salary": "source.salary"
+}).execute()
 
 
 
