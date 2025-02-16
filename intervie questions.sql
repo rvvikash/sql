@@ -7,6 +7,8 @@ original_table is the name of the original table whose structure you want to cop
 SELECT * selects all columns from the original table.
 WHERE 1 = 0 
 
+CREATE TABLE new_table LIKE original_table;	
+
 ensures that no rows are selected (since 1 is never equal to 0), but the structure of the selected columns remains intact.
 
 
