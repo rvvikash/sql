@@ -187,6 +187,17 @@ WHERE POSITION('b' IN SUBSTRING(LastName, 4)) > 0;
 2.     Display third highest salary of all employees
 Without using analytical function or max
 
+
+	SELECT * 
+FROM Employees 
+WHERE Salary = (
+    SELECT DISTINCT Salary 
+    FROM Employees 
+    ORDER BY Salary DESC 
+    LIMIT 1 OFFSET 2
+);
+
+
 3.       Display details of employees whose salary is higher than their respective departments by 6%
 
 
@@ -220,6 +231,16 @@ WHERE e.salary > a.avg_salary * 1.06;
  EMP	EMPName		Sal		Dep	Location
 	1	tk		10000000	TL	Bangalore	
 	2	hk		200000		AM	Hyd
+
+
+SELECT 
+    Emp,
+    EmpName,
+    COALESCE(MAX(Sal), 0) AS Sal,  -- Pick the highest non-null salary
+    COALESCE(MAX(Dep), 'Unknown') AS Dep,  -- Pick the first non-null department
+    COALESCE(MAX(Location), 'Unknown') AS Location  -- Pick the first non-null location
+FROM Employees
+GROUP BY Emp, EmpName;
 
 
 ---paytm--- 
