@@ -59,6 +59,9 @@ create a composite key combination of two column and make as unique and perform 
 SELECT LPAD("SQL Tutorial", 20, "ABC");
 ABCABCABSQL Tutorial
 
+"SQL Tutorial" → The original string (length = 12).
+20 → The total desired length of the output string	
+
  
 
 WITH PeriodicSales AS (
@@ -144,6 +147,11 @@ PIVOT
 Flexible Schema Design
 Design your database schema to be more flexible, for instance, using JSON or XML columns to store dynamic attributes.
 
+ALTER TABLE table_name  
+MODIFY COLUMN column_name VARCHAR(500);
+
+
+
 WITH RECURSIVE employee_hierarchy AS (
     SELECT emp_id, emp_name, manager_id, 0 AS level
     FROM employees
@@ -172,6 +180,10 @@ WITH RECURSIVE factorial_cte (n, factorial,i) AS (
 
 1.     Display the first name for employees where last name contain character ‘b’ after 3rd position without like operator
 
+SELECT FirstName
+FROM Employees
+WHERE POSITION('b' IN SUBSTRING(LastName, 4)) > 0;
+	
 2.     Display third highest salary of all employees
 Without using analytical function or max
 
