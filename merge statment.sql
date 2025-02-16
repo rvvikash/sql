@@ -71,13 +71,19 @@ source_df = spark.read.format("parquet").load("/mnt/data/new_employees")
 target_table.alias("target").merge(
     source_df.alias("source"),
     "target.employee_id = source.employee_id"
+
+	
 ).whenMatchedUpdate(set={
     "name": "source.name",
     "salary": "source.salary"
+
+	
 }).whenNotMatchedInsert(values={
     "employee_id": "source.employee_id",
     "name": "source.name",
     "salary": "source.salary"
+
+	
 }).execute()
 
 
