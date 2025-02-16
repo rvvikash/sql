@@ -12,6 +12,7 @@ FROM employee_hierarchy;
 
 
 https://www.stratascratch.com/blog/learn-to-use-a-recursive-cte-in-sql-query/
+https://www.youtube.com/watch?v=Rml3UX8no0M&ab_channel=LearnatKnowstar
 
   
 WITH RECURSIVE file_paths AS (
