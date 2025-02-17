@@ -59,8 +59,13 @@ WHERE a.topping_name < b.topping_nam
 This condition filters the results to ensure that only combinations where a.topping_name is less than b.topping_name are included in the result set. This helps to prevent duplicate combinations
 where toppings are swapped (e.g., Pepperoni, Sausage and Sausage, Pepperoni).
 
+Join Type	Concept
+CROSS JOIN=All possible combinations (Cartesian Product).
+INNER JOIN=CROSS JOIN + Matched Rows Only.
+LEFT JOIN=CROSS JOIN + Matched Rows + Unmatched Left Table Rows.
+RIGHT JOIN=CROSS JOIN + Matched Rows + Unmatched Right Table Rows.
+FULL OUTER JOIN	=CROSS JOIN + All Matched + All Unmatched Rows from Both Tables.
 
-INNER JOIN = CROSS JOIN + Matched Rows
 
 
 
