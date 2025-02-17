@@ -60,5 +60,8 @@ This condition filters the results to ensure that only combinations where a.topp
 where toppings are swapped (e.g., Pepperoni, Sausage and Sausage, Pepperoni).
 
 
+INNER JOIN = CROSS JOIN + Matched Rows
+
+
 
 
