@@ -288,6 +288,43 @@ GROUP BY country;
 
 
 https://www.udemy.com/course/a-crash-course-in-pyspark/?couponCode=ST9MT120225A
+
+
+REPLACE(input_string, substring, new_substring);
+
+
+
+it is reverse of group concatenate :---
+Methods for Different Databases
+1. MySQL (Using Recursive CTE)
+In MySQL 8+, you can use a recursive Common Table Expression (CTE):
+
+WITH RECURSIVE split_cte (id, value, rest) AS (
+    SELECT 
+        id, 
+        SUBSTRING_INDEX(value, ',', 1) AS value,
+        SUBSTRING(value, LENGTH(SUBSTRING_INDEX(value, ',', 1)) + 2) AS rest
+    FROM my_table
+    
+    UNION ALL
+    
+    SELECT 
+        id, 
+        SUBSTRING_INDEX(rest, ',', 1),
+        SUBSTRING(rest, LENGTH(SUBSTRING_INDEX(rest, ',', 1)) + 2)
+    FROM split_cte
+    WHERE rest <> ''
+)
+SELECT id, value FROM split_cte;
+
+
+2. PostgreSQL (Using STRING_TO_TABLE)
+PostgreSQL provides a built-in function:
+
+SELECT unnest(string_to_array('A,B,C,D', ',')) AS value;
+For a table:
+
+SELECT id, unnest(string_to_array(value, ',')) AS split_value FROM my_table;
 	
 	
 
