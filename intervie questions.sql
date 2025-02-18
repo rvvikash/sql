@@ -346,6 +346,17 @@ FROM RankedAccounts
 WHERE rank = 1;
 
 
+SELECT 
+    customer_id,
+    account_type,
+    balance,
+    COUNT(*) OVER (PARTITION BY customer_id ORDER BY account_type) AS account_count_per_customer
+FROM customer_accounts
+WHERE account_type = 'SAVINGS'
+HAVING COUNT(*) OVER (PARTITION BY customer_id ORDER BY account_type) = 1;
+
+
+
 	
 
 
