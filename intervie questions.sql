@@ -325,7 +325,14 @@ SELECT unnest(string_to_array('A,B,C,D', ',')) AS value;
 For a table:
 
 SELECT id, unnest(string_to_array(value, ',')) AS split_value FROM my_table;
-	
+
+
+amexp
+SELECT customer_id
+FROM customer_accounts
+GROUP BY customer_id
+HAVING MAX(CASE WHEN account_type != 'SAVINGS' THEN 1 ELSE 0 END) = 0;
+
 	
 
 
