@@ -41,3 +41,17 @@ WITH RECURSIVE Triangle AS (
 SELECT REPEAT(' ', 5 - row_num) + REPEAT('*', row_num)
 FROM Triangle;
 
+
+
+
+WITH RECURSIVE factorial_cte(n, factorial) AS (
+  SELECT 1, 1   -- Anchor member: initialize the initial values
+  UNION ALL
+  SELECT n + 1, (n + 1) * factorial
+  FROM factorial_cte
+  WHERE n < 5   -- Recursive member: perform the recursive calculation until the condition is met
+)
+SELECT factorial
+FROM factorial_cte
+WHERE n = 5;
+
