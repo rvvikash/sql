@@ -1,46 +1,63 @@
-in normal view we used to create hide column or dont want do any direct manipulation of data in main table we can use 
+✅ Definition:
+A View is a virtual table based on the result of a SELECT query.
 
-a view is a virtual table that is based on the result of a SELECT query.
-It allows you to store a query as if it were a table, which can then be queried like a regular table.
-Views are useful for simplifying complex queries, abstracting data access, and enforcing security policies.
+It does not store data physically; it pulls data from the underlying tables each time it is queried.
 
+✅ Purpose & Use Cases:
+Hide sensitive columns
 
+Simplify complex queries
 
+Abstract data access
+
+Improve security by restricting direct table access
+
+✅ Syntax:
+sql
+Copy
+Edit
 CREATE VIEW view_name AS
 SELECT column1, column2, ...
 FROM table_name
 WHERE condition;
+✅ Drop a View:
+sql
+Copy
+Edit
+DROP VIEW view_name;
+📌 Materialized Views in SQL
+✅ Definition:
+A Materialized View stores the physical result of a query like a table.
 
+Unlike a normal view, it does not update automatically unless refreshed.
 
-DROP VIEW view_name; 
--- To delete the view 
+✅ Purpose & Use Cases:
+Boost performance for complex/expensive queries
 
+Improve aggregation/reporting speed
 
-A materialized view in SQL is a database object that contains the results of a query, 
-similar to a regular view. However, unlike regular views,
-a materialized view physically stores the data returned by the query, 
-which allows for faster access and better performance, especially for complex queries and aggregations.
+Ideal for summary tables, dashboards, reporting systems
 
-
-CREATE MATERIALIZED VIEW view_name
-AS
+✅ Syntax:
+sql
+Copy
+Edit
+CREATE MATERIALIZED VIEW view_name AS
 SELECT column1, column2, ...
 FROM table_name
 WHERE condition;
-
-
-
-
-To refresh the data in a materialized view (i.e., update it with the latest data from the underlying tables), 
-you typically use the REFRESH command:
-
+✅ Refresh the Data:
+sql
+Copy
+Edit
 REFRESH MATERIALIZED VIEW view_name;
+This re-runs the underlying query and updates the materialized view with latest data.
 
--- it help to refresh the materilizaed table and its run the query of sales and add in materilized view
+🆚 Key Differences: View vs Materialized View
 
-
-
-
-
-
-
+Feature	View	Materialized View
+Data Storage	Virtual (no storage)	Physically stored
+Performance	Depends on query complexity	Faster, as data is precomputed
+Data Freshness	Always current	May be stale until refreshed
+Refresh Required	❌ No	✅ Yes (manual or scheduled)
+Use Case	Simplify queries, security	Speed up complex reporting
