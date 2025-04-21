@@ -235,7 +235,12 @@ This shows a significant speed improvement in large datasets.
 ### 💬 Interview Questions and Answers
 
 **Q1. What is the difference between clustered and non-clustered index?**
-- Clustered index changes the physical order of data; non-clustered does not.
+ Clustered Index (Like Books Arranged Alphabetically on Shelves)
+  📌 Physically changes the order of data in the table to maintain the sequnce .
+ Non-Clustered Index (Like a Table of Contents in a Book)
+ 📌 Does NOT change physical order of data in the table.
+
+
 - Only one clustered index allowed; many non-clustered indexes can be created.
 
 **Q2. When would you use a composite index?**
