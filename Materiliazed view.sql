@@ -13,17 +13,12 @@ Abstract data access
 Improve security by restricting direct table access
 
 ✅ Syntax:
-sql
-Copy
-Edit
 CREATE VIEW view_name AS
 SELECT column1, column2, ...
 FROM table_name
 WHERE condition;
 ✅ Drop a View:
-sql
-Copy
-Edit
+
 DROP VIEW view_name;
 📌 Materialized Views in SQL
 ✅ Definition:
@@ -39,17 +34,12 @@ Improve aggregation/reporting speed
 Ideal for summary tables, dashboards, reporting systems
 
 ✅ Syntax:
-sql
-Copy
-Edit
 CREATE MATERIALIZED VIEW view_name AS
 SELECT column1, column2, ...
 FROM table_name
 WHERE condition;
 ✅ Refresh the Data:
-sql
-Copy
-Edit
+
 REFRESH MATERIALIZED VIEW view_name;
 This re-runs the underlying query and updates the materialized view with latest data.
 
