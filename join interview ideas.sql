@@ -67,6 +67,10 @@ RIGHT JOIN=CROSS JOIN + Matched Rows + Unmatched Right Table Rows.
 FULL OUTER JOIN	=CROSS JOIN + All Matched + All Unmatched Rows from Both Tables.
 
 
+https://www.youtube.com/watch?v=pJWCwfv983Q&ab_channel=TheMagicofSQL
+    
+
+
 
 
 
