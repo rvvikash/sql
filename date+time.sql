@@ -55,6 +55,10 @@ Method 2: Using DATEDIFF():
 SELECT SUM(sale_amount) AS total_sales_last_10_days
 FROM sales
 WHERE DATEDIFF(CURRENT_DATE, sale_date) <= 10;
+
+BY DEFAULT IT WILL RETURN DAY AS DIFF FOR THE OUTPUT.
+
+  
 📅 9. Weekday Filtering
 WEEKDAY(date) returns:
 Monday=0, ..., Sunday=6
