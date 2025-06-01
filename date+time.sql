@@ -68,3 +68,18 @@ Filter Only Weekdays:
 SELECT * FROM sales
 WHERE WEEKDAY(sale_date) BETWEEN 0 AND 4;
 Filters records from Monday to Friday, excluding weekends.
+
+
+  SELECT 
+    *,
+    CASE 
+        WHEN EXTRACT(DAY FROM price_date) = 1 THEN price_date
+        ELSE CAST(DATE_TRUNC('month', price_date) AS DATE)
+    END AS month_start_date
+FROM product_prices;
+
+1	"2023-01-01"	10	"2023-01-01"
+1	"2023-02-15"	15	"2023-02-01"
+1	"2023-03-03"	18	"2023-03-01"
+1	"2023-03-27"	15	"2023-03-01"
+1	"2023-04-06"	20	"2023-04-01"
