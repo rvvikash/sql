@@ -1,0 +1,19 @@
+UPPER(str)	Converts to uppercase	SELECT UPPER('hello');	'HELLO'
+LOWER(str)	Converts to lowercase	SELECT LOWER('HELLO');	'hello'
+SUBSTRING(str, pos, len)	Extract substring	SELECT SUBSTRING('ChatGPT', 5, 3);	'GPT'
+SUBSTRING(str, -3)	From end (3 chars)	SELECT SUBSTRING('ChatGPT', -3);	'GPT'
+CONCAT(s1, s2,...)	Joins strings	SELECT CONCAT('Open', '-', 'AI');	'Open-AI'
+CONCAT(NULL, 'AI')	NULL in any arg → NULL	SELECT CONCAT(NULL, 'AI');	NULL
+TRIM(str)	Remove spaces both sides	SELECT TRIM(' hi there ');	'hi there'
+LTRIM(str)	Remove left space	SELECT LTRIM(' hi');	'hi'
+RTRIM(str)	Remove right space	SELECT RTRIM('hi ');	'hi'
+REPLACE(str, from, to)	Replace text	SELECT REPLACE('foo-bar', '-', '_');	'foo_bar'
+REPLACE(NULL, 'a', 'b')	NULL input	SELECT REPLACE(NULL, 'a', 'b');	NULL
+INSTR(str, substr)	Position of substring (1-based)	SELECT INSTR('DataEngineer', 'Eng');	5
+INSTR('abc', 'x')	Not found → 0	SELECT INSTR('abc', 'x');	0
+LEFT(str, len)	Left len characters	SELECT LEFT('OpenAI', 4);	'Open'
+RIGHT(str, len)	Right len characters	SELECT RIGHT('OpenAI', 2);	'AI'
+REVERSE(str)	Reverses the string	SELECT REVERSE('abc');	'cba'
+REVERSE(NULL)	NULL input	SELECT REVERSE(NULL);	NULL
+FORMAT(num, d)	Format number with commas, decimals	SELECT FORMAT(1234567.891, 2);	'1,234,567.89'
+FORMAT(NULL, 2)	NULL input	SELECT FORMAT(NULL, 2);	
