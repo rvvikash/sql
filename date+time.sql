@@ -83,3 +83,10 @@ FROM product_prices;
 1	"2023-03-03"	18	"2023-03-01"
 1	"2023-03-27"	15	"2023-03-01"
 1	"2023-04-06"	20	"2023-04-01"
+
+
+SELECT 
+  start_date,
+  months_to_add,
+  DATE_ADD(start_date, INTERVAL months_to_add MONTH) AS new_date
+FROM example;
