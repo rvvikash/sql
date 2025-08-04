@@ -90,3 +90,12 @@ SELECT
   months_to_add,
   DATE_ADD(start_date, INTERVAL months_to_add MONTH) AS new_date
 FROM example;
+
+
+
+to find quarter :-                                
+SELECT
+  your_date_column,
+  QUARTER(your_date_column) AS Quarter
+FROM your_table;
+
