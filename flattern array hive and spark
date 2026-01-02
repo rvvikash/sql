@@ -165,7 +165,21 @@ Marketing	Charlie
 COLLECT_SET → unique array of names per dept
 
 CONCAT_WS(',', …) → array → comma-separated string
+1️⃣ GROUP_CONCAT (MySQL)
 
-If you want, I can make a small Spark/PySpark version of these three examples, showing explode, collect_set, and concat_ws in PySpark, so you can practice Hive → Spark seamlessly.
+MySQL function
 
-Do you want me to do that next?
+Combines multiple row values into a single string per group
+
+Can use DISTINCT to remove duplicates
+
+Example:
+
+SELECT dept,
+       GROUP_CONCAT(DISTINCT emp_name ORDER BY emp_name) AS users_list
+FROM employees
+GROUP BY dept;
+
+dept	users_list
+Sales	Alice,Bob
+Marketing	Charlie
