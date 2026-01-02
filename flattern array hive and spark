@@ -1,0 +1,171 @@
+We have a users table with a JSON array of tags and a purchases table:
+
+1️⃣ users
+
+user_id	name	tags
+1	Alice	["sports","tech"]
+2	Bob	["tech","music"]
+3	Charlie	["sports"]
+4	David	[]
+
+2️⃣ purchases
+
+purchase_id	user_id	amount	product
+101	1	100	Laptop
+102	1	150	Book
+103	2	200	Laptop
+104	3	50	Ball
+105	3	30	Book
+106	2	100	Pen
+
+Task:
+
+Explode the tags column so each tag becomes a separate row per user.
+
+Join with purchases to calculate total purchase amount per tag.
+
+Return:
+
+| tag | user_count | total_amount | users_list |
+
+
+
+
+
+SELECT 
+    t.tag AS tag,
+    COUNT(DISTINCT u.user_id) AS user_count,
+    SUM(p.amount) AS total_amount,
+    CONCAT_WS(',', COLLECT_SET(u.name)) AS users_list
+FROM users u
+LATERAL VIEW EXPLODE(u.tags) t AS tag
+LEFT JOIN purchases p ON u.user_id = p.user_id
+GROUP BY t.tag; 
+
+
+Example:
+
+user_id	name	tags
+1	Alice	["sports","tech"]
+
+After EXPLODE:
+
+user_id	name	tag
+1	Alice	sports
+1	Alice	tech
+
+
+
+
+
+
+
+
+spark
+
+
+from pyspark.sql import functions as F
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.getOrCreate()
+
+# Explode tags
+exploded_df = users_df.withColumn("tag", F.explode("tags"))
+
+# Join with purchases
+joined_df = exploded_df.join(purchases_df, on="user_id", how="left")
+
+# Aggregate per tag
+result_df = joined_df.groupBy("tag") \
+    .agg(
+        F.countDistinct("user_id").alias("user_count"),
+        F.sum("amount").alias("total_amount"),
+        F.concat_ws(",", F.collect_set("name")).alias("users_list")
+    ) \
+    .orderBy(F.desc("total_amount"))
+
+result_df.show(truncate=False)
+
+
+
+
+
+1️⃣ Example: COLLECT_SET
+
+Scenario: You have a table of users and their departments, and you want a unique list of users per department.
+
+-- Sample table: employees
+-- emp_name STRING, dept STRING
+
+SELECT
+    dept,
+    COLLECT_SET(emp_name) AS users_array
+FROM employees
+GROUP BY dept;
+
+Sample Data
+emp_name	dept
+Alice	Sales
+Bob	Sales
+Alice	Sales
+Charlie	Marketing
+Output
+dept	users_array
+Sales	["Alice","Bob"]
+Marketing	["Charlie"]
+
+✅ COLLECT_SET removes duplicates and collects values into an array.
+
+2️⃣ Example: CONCAT_WS
+
+Scenario: You have a table of tags (as array) and want a comma-separated string.
+
+-- Sample table: user_tags
+-- user_id INT, tags ARRAY<STRING>
+
+SELECT
+    user_id,
+    CONCAT_WS(',', tags) AS tags_string
+FROM user_tags;
+
+Sample Data
+user_id	tags
+1	["sports","tech"]
+2	["music"]
+Output
+user_id	tags_string
+1	sports,tech
+2	music
+
+✅ CONCAT_WS converts an array into a single string using the separator ,.
+
+3️⃣ Example: Combine COLLECT_SET + CONCAT_WS
+
+Scenario: Aggregate all unique users per department into a comma-separated string.
+
+SELECT
+    dept,
+    CONCAT_WS(',', COLLECT_SET(emp_name)) AS users_list
+FROM employees
+GROUP BY dept;
+
+Sample Data
+emp_name	dept
+Alice	Sales
+Bob	Sales
+Alice	Sales
+Charlie	Marketing
+Output
+dept	users_list
+Sales	Alice,Bob
+Marketing	Charlie
+
+✅ Explanation:
+
+COLLECT_SET → unique array of names per dept
+
+CONCAT_WS(',', …) → array → comma-separated string
+
+If you want, I can make a small Spark/PySpark version of these three examples, showing explode, collect_set, and concat_ws in PySpark, so you can practice Hive → Spark seamlessly.
+
+Do you want me to do that next?
