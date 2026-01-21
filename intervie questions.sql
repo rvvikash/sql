@@ -334,6 +334,10 @@ GROUP BY customer_id
 HAVING MAX(CASE WHEN account_type != 'SAVINGS' THEN 1 ELSE 0 END) = 0;
 
 
+HAVING COUNT(DISTINCT subject) = 1 AND MAX(subject) = 'MATHS'
+
+
+
 
 SELECT 
     customer_id,
