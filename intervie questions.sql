@@ -334,17 +334,6 @@ GROUP BY customer_id
 HAVING MAX(CASE WHEN account_type != 'SAVINGS' THEN 1 ELSE 0 END) = 0;
 
 
-WITH RankedAccounts AS (
-    SELECT 
-        customer_id,
-        account_type,
-        DENSE_RANK() OVER (PARTITION BY customer_id ORDER BY CASE WHEN account_type != 'SAVINGS' THEN 1 ELSE 0 END) AS rank
-    FROM customer_accounts
-)
-SELECT customer_id
-FROM RankedAccounts
-WHERE rank = 1;
-
 
 SELECT 
     customer_id,
