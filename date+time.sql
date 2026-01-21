@@ -57,6 +57,13 @@ SELECT SUM(sale_amount) AS total_sales_last_10_days
 FROM sales
 WHERE DATEDIFF(CURRENT_DATE, sale_date) <= 10;
 
+
+SELECT SUM(sale_amount) AS total_sales_last_10_days
+FROM sales
+WHERE sale_date BETWEEN CURRENT_DATE - INTERVAL 10 DAY
+                     AND CURRENT_DATE;
+
+
 BY DEFAULT IT WILL RETURN DAY AS DIFF FOR THE OUTPUT.
 
   
@@ -68,6 +75,7 @@ Filter Only Weekdays:
 
 SELECT * FROM sales
 WHERE WEEKDAY(sale_date) BETWEEN 0 AND 4;
+
 Filters records from Monday to Friday, excluding weekends.
 
 
