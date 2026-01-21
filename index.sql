@@ -246,6 +246,25 @@ This shows a significant speed improvement in large datasets.
 
 ---
 
+
+
+EXPLAIN SELECT * FROM employees WHERE emp_name = 'Alice';
+EXPLAIN does not run the query fully (for SELECT).
+
+MySQL parses the query, checks table metadata, indexes, and estimates execution plan:
+
+Type: ALL → full table scan
+
+Type: ref / range → index lookup
+
+Key: which index is used
+
+Rows: estimated number of rows scanned
+
+
+
+  
+
 ### 💬 Interview Questions and Answers
 
 **Q1. What is the difference between clustered and non-clustered index?**
