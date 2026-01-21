@@ -228,6 +228,20 @@ EXPLAIN SELECT * FROM employees WHERE emp_name = 'Alice';
 | Without Index    | 120ms          |
 | With Index       | 5ms            |
 
+
+
+  What happens WITH an index ???????
+CREATE INDEX idx_emp_name ON employees(emp_name);
+
+
+MySQL builds a B-Tree (balanced tree) internally for emp_name.
+
+Structure looks like:
+
+             [Alice]
+           /        \
+       [Aaron]     [Bob]
+
 This shows a significant speed improvement in large datasets.
 
 ---
