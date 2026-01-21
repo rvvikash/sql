@@ -356,6 +356,12 @@ WHERE account_type = 'SAVINGS'
 HAVING COUNT(*) OVER (PARTITION BY customer_id ORDER BY account_type) = 1;
 
 
+Full address from columns
+SELECT
+  CONCAT_WS(' ', first_name, middle_name, last_name) AS full_name
+FROM employees;
+
+
 
 	
 
