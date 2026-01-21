@@ -183,3 +183,24 @@ GROUP BY dept;
 dept	users_list
 Sales	Alice,Bob
 Marketing	Charlie
+
+
+
+
+Flatten an ARRAY in SQL
+
+orders
+------------------------------
+| order_id | items          |
+------------------------------
+| 1        | ['apple','pen']|
+| 2        | ['book']       |
+| 3        | ['pen','eraser','pencil'] |
+
+
+PostgreSQL (ARRAY)
+SELECT
+  order_id,
+  unnest(items) AS item
+FROM orders;
+
