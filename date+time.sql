@@ -108,3 +108,23 @@ SELECT
   QUARTER(your_date_column) AS Quarter
 FROM your_table;
 
+
+SELECT
+  QUARTER(sale_date) AS quarter,
+  SUM(sale_amount) AS total_sales
+FROM sales
+GROUP BY QUARTER(sale_date);
+
+QUARTER(date) → returns 1 to 4
+
++------------+---------+
+| sale_date  | Quarter |
++------------+---------+
+| 2025-01-15 | 1 |
+| 2025-03-30 | 1 |
+| 2025-04-10 | 2 |
+| 2025-07-05 | 3 |
+| 2025-11-20 | 4 |
++------------+---------+
+
+
