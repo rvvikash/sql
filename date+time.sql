@@ -21,6 +21,7 @@ Add Time:
 
 SELECT DATE_ADD('2025-02-07', INTERVAL 10 DAY) AS future_date;
 SELECT DATE_ADD('2025-02-07', INTERVAL 1 MONTH) AS one_month_later;
+DATE_ADD(order_date, INTERVAL 10 DAY) AS future_date
 
 Subtract Time:
 
