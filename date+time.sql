@@ -23,10 +23,19 @@ SELECT DATE_ADD('2025-02-07', INTERVAL 10 DAY) AS future_date;
 SELECT DATE_ADD('2025-02-07', INTERVAL 1 MONTH) AS one_month_later;
 DATE_ADD(order_date, INTERVAL 10 DAY) AS future_date
 
+DATEADD(HOUR, 2, login_time)      -- add 2 hours
+DATEADD(MINUTE, 30, login_time)   -- add 30 minutes
+
 Subtract Time:
 
 SELECT DATE_SUB('2025-02-07', INTERVAL 10 DAY) AS past_date;
 SELECT DATE_SUB('2025-02-07', INTERVAL 2 WEEK) AS two_weeks_earlier;
+
+Subtract hours
+SELECT DATE_SUB(event_time, INTERVAL 2 HOUR) AS new_time
+FROM events;
+
+
 📆 5. Calculating Date Differences
 Days Between Dates:
 
